@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autocallable-desk-sim"
+version = "0.1.0"
+description = "Autocallable PnL & hedging desk simulator"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "pytest",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
