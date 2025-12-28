@@ -82,3 +82,19 @@ def obs_times_to_indices(grid: TimeGrid, obs_times: np.ndarray) -> np.ndarray:
         raise ValueError("mapped obs_indices are not strictly increasing; adjust grid or obs_times")
 
     return idx.astype(int)
+
+def make_remaining_grid(full_grid: TimeGrid, t_idx: int) -> TimeGrid:
+    """
+    Builds a TimeGrid for remaining time from index t_idx to end, shifted so it starts at 0.
+    """
+    times = full_grid.times[t_idx:] - full_grid.times[t_idx]
+    dt = float(full_grid.dt)
+    return TimeGrid(times=times, dt=dt)
+
+def remaining_obs_times(product_obs_times: np.ndarray, now_time: float) -> np.ndarray:
+    """
+    Return obs times strictly greater than now_time, shifted so now is 0.
+    """
+    obs = np.asarray(product_obs_times, dtype=float)
+    future = obs[obs > now_time + 1e-12]
+    return future - now_time
