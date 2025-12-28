@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from src.desk_sim.instruments import AutocallableWorstOf, payoff_and_tau_from_levels
+from desk_sim.instruments import AutocallableWorstOf, payoff_and_tau_from_levels
 
 
 def test_autocall_first_observation():

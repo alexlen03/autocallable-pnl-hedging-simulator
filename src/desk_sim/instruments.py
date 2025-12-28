@@ -34,7 +34,7 @@ class AutocallableWorstOf:
 
 def payoff_and_tau_from_levels(
     product: AutocallableWorstOf,
-    levels: np.ndarray,          # shape (n_steps, n_assets)
+    levels: np.ndarray,          # shape (n_steps, n_assets): this is the trajectory 
     obs_indices: np.ndarray      # indices of observation dates
 ) -> tuple[float, float]:
     
@@ -43,7 +43,7 @@ def payoff_and_tau_from_levels(
         payoff: cash amount paid
         tau: redemption time in years
     """
-    
+
     n_steps, n_assets = levels.shape
     if n_assets < 2:
         raise ValueError("Worst-of autocallable requires at least 2 assets")
